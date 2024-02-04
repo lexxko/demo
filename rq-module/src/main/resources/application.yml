@@ -1,0 +1,5 @@
+server:
+  port: 8080
+
+app:
+  rs-module-url: http://localhost:8081/rs
