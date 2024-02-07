@@ -3,3 +3,17 @@ server:
 
 app:
   rs-module-url: http://localhost:8081/rs
+  # OK, NOT_FOUND
+  mode: NOT_FOUND
+
+spring:
+  cloud:
+    openfeign:
+      client:
+        config:
+          default:
+            connectTimeout: 5000
+            readTimeout: 5000
+            loggerLevel: basic
+      circuitbreaker:
+        enabled: true
