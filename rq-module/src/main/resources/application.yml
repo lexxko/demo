@@ -3,8 +3,8 @@ server:
 
 app:
   rs-module-url: http://localhost:8081/rs
-  # OK, NOT_FOUND
-  mode: NOT_FOUND
+  # OK, NOT_FOUND, SERVICE_DISCOVERY
+  mode: SERVICE_DISCOVERY
 
 spring:
   cloud:
@@ -17,3 +17,6 @@ spring:
             loggerLevel: basic
       circuitbreaker:
         enabled: true
+
+logging.level:
+  com.example.feign: INFO
