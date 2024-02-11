@@ -3,8 +3,8 @@ server:
 
 app:
   rs-module-url: http://localhost:8081/rs
-  # OK, NOT_FOUND, SERVICE_DISCOVERY
-  mode: SERVICE_DISCOVERY
+  # OK, NOT_FOUND, SERVICE_DISCOVERY, TIMEOUT
+  mode: TIMEOUT
 
 spring:
   cloud:
@@ -19,4 +19,4 @@ spring:
         enabled: true
 
 logging.level:
-  com.example.feign: INFO
+  com.example.feign: DEBUG

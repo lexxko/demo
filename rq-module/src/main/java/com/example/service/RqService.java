@@ -31,19 +31,27 @@ public class RqService {
 
     @Scheduled(initialDelay = 10, fixedDelay = 5, timeUnit = TimeUnit.SECONDS)
     public void invoke() {
-        final Optional<ResponseDto> response;
-        switch (mode) {
-            case OK -> response = rsModuleFeignClient.getResponse();
-            case NOT_FOUND -> response = rsModuleFeignClient.getNfResponse();
-            case SERVICE_DISCOVERY -> response = feignProxy.getResponse();
-            default -> throw new DemoAppException();
+        try {
+            final Optional<ResponseDto> response;
+            switch (mode) {
+                case OK -> response = rsModuleFeignClient.getResponse();
+                case NOT_FOUND -> response = rsModuleFeignClient.getNfResponse();
+                case SERVICE_DISCOVERY -> response = feignProxy.getResponse();
+                case TIMEOUT -> response = rsModuleFeignClient.getTimeout();
+                default -> throw new DemoAppException();
+            }
+            response.ifPresentOrElse(rs -> log.info(rs.getResult()), () -> log.info("Result is empty"));
+        } catch (Exception e) {
+            log.error(e.getMessage());
         }
-        response.ifPresentOrElse(rs -> log.info(rs.getResult()), () -> log.info("Result is empty"));
     }
 
     public enum Mode {
         OK,
         NOT_FOUND,
-        SERVICE_DISCOVERY
+        SERVICE_DISCOVERY,
+        TIMEOUT
     }
+
+//    private static
 }

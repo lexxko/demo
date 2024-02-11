@@ -34,6 +34,12 @@ public interface RsModuleFeignClient {
     @GetMapping(path = "get-rs")
     Optional<ResponseDto> getResponse(@NotNull URI uri);
 
+    /**
+     * Returns timeout
+     */
+    @GetMapping(path = "get-timeout")
+    Optional<ResponseDto> getTimeout();
+
 
     @Component
     class RsModuleFeignClientFallback implements FallbackFactory<RsModuleFeignClient> {
@@ -58,6 +64,11 @@ public interface RsModuleFeignClient {
 
                 @Override
                 public Optional<ResponseDto> getResponse(@NotNull URI uri) {
+                    throw new DemoAppException(cause.getMessage());
+                }
+
+                @Override
+                public Optional<ResponseDto> getTimeout() {
                     throw new DemoAppException(cause.getMessage());
                 }
             };
