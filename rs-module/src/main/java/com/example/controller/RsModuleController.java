@@ -23,6 +23,9 @@ public class RsModuleController extends BaseController {
         return ResponseEntity.notFound().build();
     }
 
+    /**
+     * Imitation of a custom Service discovery
+     */
     @GetMapping(path = "sd/get-rs")
     public ResponseDto getSdResponse() {
         return new ResponseDto(0, "Success. Service discovery is working");

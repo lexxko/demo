@@ -52,6 +52,4 @@ public class RqService {
         SERVICE_DISCOVERY,
         TIMEOUT
     }
-
-//    private static
 }

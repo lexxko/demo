@@ -29,7 +29,7 @@ public interface RsModuleFeignClient {
     Optional<ResponseDto> getNfResponse();
 
     /**
-     * Accepts custom URL
+     * Accepts custom URL (imitation of a custom Service discovery)
      */
     @GetMapping(path = "get-rs")
     Optional<ResponseDto> getResponse(@NotNull URI uri);
