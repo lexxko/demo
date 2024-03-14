@@ -4,7 +4,7 @@ server:
 app:
   rs-module-url: http://localhost:8081/rs
   # OK, NOT_FOUND, SERVICE_DISCOVERY, TIMEOUT
-  mode: TIMEOUT
+  mode: OK
 
 spring:
   cloud:
@@ -16,7 +16,7 @@ spring:
             readTimeout: 5000
             loggerLevel: basic
       circuitbreaker:
-        enabled: true
+        enabled: false
 
 logging.level:
   com.example.feign: DEBUG
